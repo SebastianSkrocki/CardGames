@@ -28,14 +28,6 @@ public class Card {
 
     @Override
     public String toString() {
-        return this.suit + this.rank.toString() + this.rank.getValue();
-    }
-
-    public static void main(String[] args) {
-        Card card1 = new Card(Suit.DIAMONDS,Rank.JACK);
-        System.out.println(card1);
-
-        System.out.println(card1.suit.toString());
-        System.out.println("\u2666");
+        return this.suit + this.rank.toString();
     }
 }
