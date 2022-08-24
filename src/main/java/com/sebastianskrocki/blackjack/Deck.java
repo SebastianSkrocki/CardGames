@@ -2,11 +2,11 @@ package com.sebastianskrocki.blackjack;
 
 import java.util.ArrayList;
 import java.util.Arrays;
+import java.util.Random;
 
 public class Deck {
 
     private final ArrayList<Card> deck = new ArrayList<>(generateDeck());
-
 
     public static ArrayList<Card> generateDeck(){
         ArrayList<Card> deck = new ArrayList<>();
@@ -19,8 +19,12 @@ public class Deck {
         }
         return deck;
     }
-    public Card getCard(int index){
-        return deck.get(index);
+    public Card getCardFromDeck(){
+        Random randomCard = new Random(System.currentTimeMillis());
+        System.out.println(randomCard);
+        Card matchedCard = deck.get(randomCard.nextInt(deck.size()));
+        deck.remove(matchedCard);
+        return matchedCard;
     }
 
     public ArrayList<Card> removeCard(int index){
