@@ -6,9 +6,30 @@ import java.util.Random;
 
 public class Deck {
 
-    private final ArrayList<Card> deck = new ArrayList<>(generateDeck());
+    private ArrayList<Card> deck = new ArrayList<>(generateDeck());
+
+    public Card getCardFromDeck(){
+        Random randomCard = new Random(System.currentTimeMillis());
+        Card matchedCard = deck.get(randomCard.nextInt(deck.size()));
+        removeCard(matchedCard);
+        return matchedCard;
+    }
+    public void removeCard(Card card){
+        deck.remove(card);
+    }
+
+    public void restartDeck(){
+        this.deck = generateDeck();
+    }
+
+    public void showDeck(){
+        for (Card x: deck) {
+            System.out.println(x);
+        }
+    }
 
     public static ArrayList<Card> generateDeck(){
+
         ArrayList<Card> deck = new ArrayList<>();
         ArrayList<Suit> suits = new ArrayList<>(Arrays.asList(Suit.values()));
         ArrayList<Rank> ranks = new ArrayList<>(Arrays.asList(Rank.values()));
@@ -19,22 +40,8 @@ public class Deck {
         }
         return deck;
     }
-    public Card getCardFromDeck(){
-        Random randomCard = new Random(System.currentTimeMillis());
-        System.out.println(randomCard);
-        Card matchedCard = deck.get(randomCard.nextInt(deck.size()));
-        deck.remove(matchedCard);
-        return matchedCard;
-    }
 
-    public ArrayList<Card> removeCard(int index){
-        deck.remove(index);
-        return deck;
-    }
-
-    public void showDeck(){
-        for (Card x: deck) {
-            System.out.println(x);
-        }
+    public int size(){
+        return deck.size();
     }
 }

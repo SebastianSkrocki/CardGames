@@ -5,7 +5,7 @@ import java.util.ArrayList;
 public class Player {
     private String name;
     private ArrayList<Card> hand = new ArrayList<>();
-    Deck deck = new Deck();
+
 
     public Player(String name) {
         this.name = name;
@@ -27,12 +27,12 @@ public class Player {
         this.hand = hand;
     }
 
-    public void drawCard(){
+    public void drawCard(Deck deck){
         hand.add(deck.getCardFromDeck());
     }
 
     public void showHand () {
-        for (Card x : hand){
+        for (Card x : getHand()){
             System.out.println(x);
         }
     }

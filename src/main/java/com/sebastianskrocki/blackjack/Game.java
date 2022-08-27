@@ -1,21 +1,27 @@
 package com.sebastianskrocki.blackjack;
 
-import java.util.ArrayList;
-import java.util.Random;
-import java.util.Scanner;
+
 
 public class Game {
     public static void main(String[] args) {
         startGame();
+
     }
 
     public static void startGame(){
+        Deck deck = new Deck();
         Player playmaker = new Player("Playmaker");
-        System.out.print("Your name: ");
+        System.out.println("Your name: ");
         Player player = new Player("Gracz");
-        playmaker.drawCard();
-        playmaker.drawCard();
-        playmaker.drawCard();
+        //deck.showDeck();
+        playmaker.drawCard(deck);
+        playmaker.drawCard(deck);
+        playmaker.drawCard(deck);
+        System.out.println(deck.size());
         playmaker.showHand();
+        deck.showDeck();
+        deck.restartDeck();
+        System.out.println(deck.size());
+        deck.showDeck();
     }
 }
